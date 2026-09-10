@@ -1,0 +1,2 @@
+# This file locks Prisma migrations to the canonical PostgreSQL provider.
+provider = "postgresql"

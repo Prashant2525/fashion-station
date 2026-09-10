@@ -1,0 +1,4 @@
+-- Fashion Station database foundation baseline.
+--
+-- Intentionally no domain tables are created here. Product, inventory, order,
+-- auth, tenant, and payment models require an approved domain-model review.

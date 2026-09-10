@@ -1,0 +1,35 @@
+{
+  "name": "fashion-station",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Fashion Station shared-platform monorepo",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "build": "npm run build:packages && npm run build --workspace @fashion-station/api && npm run build --workspace @fashion-station/web",
+    "build:packages": "npm run build --workspace @fashion-station/shared-types && npm run build --workspace @fashion-station/validation && npm run build --workspace @fashion-station/api-client && npm run build --workspace @fashion-station/shared",
+    "dev:api": "npm run build:packages && npm run start:dev --workspace @fashion-station/api",
+    "dev:web": "npm run dev --workspace @fashion-station/web",
+    "dev:mobile": "npm run start --workspace @fashion-station/mobile",
+    "lint": "npm run lint --workspaces --if-present",
+    "typecheck": "npm run build:packages && npm run typecheck --workspaces --if-present",
+    "prisma:generate": "prisma generate --schema prisma/schema.prisma",
+    "prisma:migrate:dev": "prisma migrate dev --schema prisma/schema.prisma",
+    "prisma:migrate:deploy": "prisma migrate deploy --schema prisma/schema.prisma",
+    "prisma:seed": "prisma db seed --schema prisma/schema.prisma",
+    "prisma:studio": "prisma studio --schema prisma/schema.prisma"
+  },
+  "devDependencies": {
+    "prisma": "^6.6.0",
+    "typescript": "^5.8.3"
+  },
+  "overrides": {
+    "react": "19.0.0",
+    "react-dom": "19.0.0"
+  }
+}
